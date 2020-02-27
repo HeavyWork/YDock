@@ -25,8 +25,8 @@
     <SolidColorBrush x:Key="WindowBorderBrush" Color="{DynamicResource BorderColorKey}"/>
     <SolidColorBrush x:Key="ActiveHeaderBackground" Color="{DynamicResource AccentColorKey}"/>
     <SolidColorBrush x:Key="DisActiveHeaderBackground" Color="{DynamicResource InactiveBackgroundColorKey}"/>
-    <SolidColorBrush x:Key="AnchorPanelBackground" Color="{DynamicResource ActiveBackgroundColorKey}"/>
-    <SolidColorBrush x:Key="ActivePanelItemBackground" Color="{DynamicResource HighlightBackgroundColorKey}"/>
+    <SolidColorBrush x:Key="AnchorPanelBackground" Color="{DynamicResource ThemeColorKey}"/>
+    <SolidColorBrush x:Key="ActivePanelItemBackground" Color="{DynamicResource ThemeColorKey}"/>
 
     <Style x:Key="WindowButtonStyle" TargetType="{x:Type Button}">
         <Setter Property="VerticalAlignment" Value="Top"/>
