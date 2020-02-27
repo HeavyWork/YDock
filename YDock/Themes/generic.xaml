@@ -730,7 +730,7 @@
     </ControlTemplate>
 
     <ControlTemplate x:Key="DocumentGroupControlNormal" TargetType="{x:Type view:LayoutDocumentGroupControl}">
-        <Grid KeyboardNavigation.TabNavigation="Local">
+        <Grid KeyboardNavigation.TabNavigation="Local" Background="{DynamicResource ThemeBrushKey}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
@@ -756,7 +756,7 @@
                                 HorizontalAlignment="Stretch"
                                 BorderBrush="{TemplateBinding BorderBrush}"
                                 BorderThickness="{TemplateBinding BorderThickness}"
-                                Background="{TemplateBinding Background}"
+                                Background="{DynamicResource ThemeBrushKey}"
                                 KeyboardNavigation.DirectionalNavigation="Contained"
                                 Grid.Row="2" SnapsToDevicePixels="True"
                                 KeyboardNavigation.TabIndex="2"
