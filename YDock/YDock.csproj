@@ -144,8 +144,8 @@
     <Compile Include="View\Layout\LayoutGroupPanel.cs" />
     <Compile Include="View\Layout\LayoutRootPanel.cs" />
     <Compile Include="View\Control\DockBarGroupControl.cs" />
-    <Compile Include="View\Meun\DockMenu.cs" />
-    <Compile Include="View\Meun\DocumentMenu.cs" />
+    <Compile Include="View\Menu\DockMenu.cs" />
+    <Compile Include="View\Menu\DocumentMenu.cs" />
     <Compile Include="View\Render\BaseDropPanel.cs" />
     <Compile Include="View\Render\BaseDropVisual.cs" />
     <Compile Include="View\ViewExtensions.cs" />
