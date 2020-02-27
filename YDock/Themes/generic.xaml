@@ -6,7 +6,9 @@
                     xmlns:converters="clr-namespace:YDock.Converters"
                     xmlns:command="clr-namespace:YDock.Commands"
                     xmlns:sys="clr-namespace:System;assembly=mscorlib"
-                    xmlns:Global="clr-namespace:YDock.Global">
+                    xmlns:Global="clr-namespace:YDock.Global"
+                    xmlns:chrome="http://schemes.grabacr.net/winfx/2014/chrome"
+                    xmlns:controls="http://schemes.grabacr.net/winfx/2014/controls">
     <enum:DockSide x:Key="Top">Top</enum:DockSide>
     <enum:DockSide x:Key="Right">Right</enum:DockSide>
 
@@ -16,15 +18,15 @@
     <converters:DockModeToVisibilityConverter x:Key="DockModeToVisibilityConverter"/>
     <converters:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
 
-    <SolidColorBrush x:Key="WindowBackground" Color="#FFEEEEF2"/>
-    <SolidColorBrush x:Key="MouseOnBackground" Color="#FF1C97EA"/>
-    <SolidColorBrush x:Key="SelectedBackground" Color="#FFD4D4D4"/>
-    <SolidColorBrush x:Key="BorderBrush" Color="#FFCCCEDB"/>
-    <SolidColorBrush x:Key="WindowBorderBrush" Color="#FF9B9FB9"/>
-    <SolidColorBrush x:Key="ActiveHeaderBackground" Color="#FF007ACC"/>
-    <SolidColorBrush x:Key="DisActiveHeaderBackground" Color="#FFEEEEF2"/>
-    <SolidColorBrush x:Key="AnchorPanelBackground" Color="#FFEEEEF2"/>
-    <SolidColorBrush x:Key="ActivePanelItemBackground" Color="#FFC9DEF5"/>
+    <SolidColorBrush x:Key="WindowBackground" Color="Transparent"/>
+    <SolidColorBrush x:Key="MouseOnBackground" Color="{DynamicResource AccentColorKey}"/>
+    <SolidColorBrush x:Key="SelectedBackground" Color="{DynamicResource ActiveBackgroundColorKey}"/>
+    <SolidColorBrush x:Key="BorderBrush" Color="{DynamicResource BorderColorKey}"/>
+    <SolidColorBrush x:Key="WindowBorderBrush" Color="{DynamicResource BorderColorKey}"/>
+    <SolidColorBrush x:Key="ActiveHeaderBackground" Color="{DynamicResource AccentColorKey}"/>
+    <SolidColorBrush x:Key="DisActiveHeaderBackground" Color="{DynamicResource InactiveBackgroundColorKey}"/>
+    <SolidColorBrush x:Key="AnchorPanelBackground" Color="{DynamicResource ActiveBackgroundColorKey}"/>
+    <SolidColorBrush x:Key="ActivePanelItemBackground" Color="{DynamicResource HighlightBackgroundColorKey}"/>
 
     <Style x:Key="WindowButtonStyle" TargetType="{x:Type Button}">
         <Setter Property="VerticalAlignment" Value="Top"/>
@@ -36,7 +38,7 @@
         <Setter Property="IsTabStop" Value="False"/>
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Background" Value="White"/>
+                <Setter Property="Background" Value="{DynamicResource ActiveForegroundBrushKey}"/>
                 <Setter Property="Foreground" Value="{StaticResource ActiveHeaderBackground}"/>
             </Trigger>
             <MultiTrigger>
@@ -46,7 +48,7 @@
                 </MultiTrigger.Conditions>
                 <MultiTrigger.Setters>
                     <Setter Property="Background" Value="{StaticResource ActiveHeaderBackground}"/>
-                    <Setter Property="Foreground" Value="White"/>
+                    <Setter Property="Foreground" Value="{DynamicResource ActiveForegroundBrushKey}"/>
                 </MultiTrigger.Setters>
             </MultiTrigger>
         </Style.Triggers>
@@ -60,7 +62,7 @@
                         <Path VerticalAlignment="Center" HorizontalAlignment="Center"
                               Data="M2,1 L6,5 L10,1 L11,2 L7,6 L11,10 L10,11 L6,7 L2,11 L1,10 L5,6 L1,2 Z"
                               Width="12" Height="12" UseLayoutRounding="True"
-                              Fill="{TemplateBinding Foreground}"/>
+                              Fill="{DynamicResource ActiveForegroundBrushKey}"/>
                     </Grid>
                 </ControlTemplate>
             </Setter.Value>
@@ -75,7 +77,7 @@
                         <Path VerticalAlignment="Center" HorizontalAlignment="Center"
                               Data="M1,5 L1,11 L8,11 L8,5 Z M4,2 L4,3 L9,3 L9,8 L11,8 L11,2 Z M3,0 L12,0 L12,9 L9,9 L9,12 L0,12 L0,3 L3,3 Z"
                               Width="12" Height="12" UseLayoutRounding="True"
-                              Fill="{TemplateBinding Foreground}"/>
+                              Fill="{DynamicResource ActiveForegroundBrushKey}"/>
                     </Grid>
                 </ControlTemplate>
             </Setter.Value>
@@ -90,7 +92,7 @@
                         <Path VerticalAlignment="Center" HorizontalAlignment="Center"
                               Data="M1,4 L1,11 L11,11 L11,4 Z M0,1 L12,1 L12,12 L0,12 Z"
                               Width="12" Height="12" UseLayoutRounding="True"
-                              Fill="{TemplateBinding Foreground}"/>
+                              Fill="{DynamicResource ActiveForegroundBrushKey}"/>
                     </Grid>
                 </ControlTemplate>
             </Setter.Value>
@@ -105,7 +107,7 @@
                         <Path VerticalAlignment="Center" HorizontalAlignment="Center"
                               Data="M0,5 L12,5 L12,7 L0,7 Z"
                               Width="12" Height="12" UseLayoutRounding="True"
-                              Fill="{TemplateBinding Foreground}"/>
+                              Fill="{DynamicResource ActiveForegroundBrushKey}"/>
                     </Grid>
                 </ControlTemplate>
             </Setter.Value>
@@ -116,7 +118,7 @@
         <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="WindowChrome.IsHitTestVisibleInChrome" Value="True"/>
         <Setter Property="Background" Value="Transparent"/>
-        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="Foreground" Value="{DynamicResource ActiveForegroundBrushKey}"/>
         <Setter Property="Height" Value="16"/>
         <Setter Property="Width" Value="16"/>
         <Setter Property="Template">
@@ -145,7 +147,7 @@
         </Setter>
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Background" Value="#FF52B0EF"/>
+                <Setter Property="Background" Value="{DynamicResource AccentBrushKey}"/>
             </Trigger>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
@@ -153,7 +155,7 @@
                     <Condition Property="IsPressed" Value="True"/>
                 </MultiTrigger.Conditions>
                 <MultiTrigger.Setters>
-                    <Setter Property="Background" Value="#FF0E6198"/>
+                    <Setter Property="Background" Value="{DynamicResource AccentBrushKey}"/>
                 </MultiTrigger.Setters>
             </MultiTrigger>
             <MultiDataTrigger>
@@ -163,7 +165,7 @@
                     <Condition Binding="{Binding RelativeSource={RelativeSource TemplatedParent},Path=Content.IsActive}" Value="False"/>
                 </MultiDataTrigger.Conditions>
                 <MultiDataTrigger.Setters>
-                    <Setter Property="Background" Value="#FFE6E7ED"/>
+                    <Setter Property="Background" Value="{DynamicResource ActiveForegroundBrushKey}"/>
                 </MultiDataTrigger.Setters>
             </MultiDataTrigger>
             <MultiDataTrigger>
@@ -174,7 +176,7 @@
                     <Condition Binding="{Binding RelativeSource={RelativeSource TemplatedParent},Path=Content.IsActive}" Value="False"/>
                 </MultiDataTrigger.Conditions>
                 <MultiDataTrigger.Setters>
-                    <Setter Property="Background" Value="#FFB7B9C5"/>
+                    <Setter Property="Background" Value="{DynamicResource ActiveForegroundBrushKey}"/>
                 </MultiDataTrigger.Setters>
             </MultiDataTrigger>
         </Style.Triggers>
@@ -186,6 +188,7 @@
         <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="WindowChrome.IsHitTestVisibleInChrome" Value="True"/>
         <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Foreground" Value="{DynamicResource ActiveForegroundBrushKey}"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ToggleButton}">
@@ -201,10 +204,10 @@
         <Setter Property="Foreground" Value="Black"/>
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Background" Value="#FFF7F7F9"/>
+                <Setter Property="Background" Value="{DynamicResource ActiveForegroundBrushKey}"/>
             </Trigger>
             <DataTrigger Binding="{Binding RelativeSource={RelativeSource TemplatedParent},Path=DataContext.IsActive}" Value="True">
-                <Setter Property="Foreground" Value="White"/>
+                <Setter Property="Foreground" Value="{DynamicResource ActiveForegroundBrushKey}"/>
             </DataTrigger>
             <MultiDataTrigger>
                 <MultiDataTrigger.Conditions>
@@ -212,11 +215,11 @@
                     <Condition Binding="{Binding RelativeSource={RelativeSource TemplatedParent},Path=DataContext.IsActive}" Value="True"/>
                 </MultiDataTrigger.Conditions>
                 <MultiDataTrigger.Setters>
-                    <Setter Property="Background" Value="#FF52B0EF"/>
+                    <Setter Property="Background" Value="{DynamicResource AccentBrushKey}"/>
                 </MultiDataTrigger.Setters>
             </MultiDataTrigger>
             <Trigger Property="IsChecked" Value="True">
-                <Setter Property="Background" Value="#FFB7B9C5"/>
+                <Setter Property="Background" Value="{DynamicResource ActiveForegroundBrushKey}"/>
             </Trigger>
             <MultiDataTrigger>
                 <MultiDataTrigger.Conditions>
@@ -224,7 +227,7 @@
                     <Condition Binding="{Binding RelativeSource={RelativeSource TemplatedParent},Path=DataContext.IsActive}" Value="True"/>
                 </MultiDataTrigger.Conditions>
                 <MultiDataTrigger.Setters>
-                    <Setter Property="Background" Value="#FF0E6198"/>
+                    <Setter Property="Background" Value="{DynamicResource AccentBrushKey}"/>
                 </MultiDataTrigger.Setters>
             </MultiDataTrigger>
         </Style.Triggers>
@@ -234,11 +237,11 @@
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
                 <Setter Property="Background" Value="#FFC9DEF5"/>
-                <Setter Property="Foreground" Value="#FF007ACC"/>
+                <Setter Property="Foreground" Value="{DynamicResource AccentBrushKey}"/>
             </Trigger>
             <Trigger Property="IsChecked" Value="True">
                 <Setter Property="Background" Value="{StaticResource ActiveHeaderBackground}"/>
-                <Setter Property="Foreground" Value="White"/>
+                <Setter Property="Foreground" Value="{DynamicResource ActiveForegroundBrushKey}"/>
             </Trigger>
         </Style.Triggers>
     </Style>
@@ -247,12 +250,12 @@
         <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="WindowChrome.IsHitTestVisibleInChrome" Value="True"/>
         <Setter Property="Background" Value="Transparent"/>
-        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="Foreground" Value="{DynamicResource ActiveForegroundBrushKey}"/>
         <Setter Property="Height" Value="16"/>
         <Setter Property="Width" Value="18"/>
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Background" Value="#FFF7F7F9"/>
+                <Setter Property="Background" Value="{DynamicResource ActiveForegroundBrushKey}"/>
             </Trigger>
             <DataTrigger Binding="{Binding RelativeSource={RelativeSource TemplatedParent},Path=DataContext.IsActive}" Value="False">
                 <Setter Property="Foreground" Value="Black"/>
@@ -263,7 +266,7 @@
                     <Condition Binding="{Binding RelativeSource={RelativeSource TemplatedParent},Path=DataContext.IsActive}" Value="True"/>
                 </MultiDataTrigger.Conditions>
                 <MultiDataTrigger.Setters>
-                    <Setter Property="Background" Value="#FF52B0EF"/>
+                    <Setter Property="Background" Value="{DynamicResource AccentBrushKey}"/>
                 </MultiDataTrigger.Setters>
             </MultiDataTrigger>
             <MultiTrigger>
@@ -272,8 +275,8 @@
                     <Condition Property="IsPressed" Value="True"/>
                 </MultiTrigger.Conditions>
                 <MultiTrigger.Setters>
-                    <Setter Property="Background" Value="#FF0E6198"/>
-                    <Setter Property="Foreground" Value="White"/>
+                    <Setter Property="Background" Value="{DynamicResource AccentBrushKey}"/>
+                    <Setter Property="Foreground" Value="{DynamicResource ActiveForegroundBrushKey}"/>
                 </MultiTrigger.Setters>
             </MultiTrigger>
         </Style.Triggers>
@@ -288,7 +291,7 @@
                         <Path VerticalAlignment="Center" HorizontalAlignment="Center" SnapsToDevicePixels="True"
                               Data="M2,1 L6,5 L10,1 L11,2 L7,6 L11,10 L10,11 L6,7 L2,11 L1,10 L5,6 L1,2 Z"
                               Width="12" Height="12" UseLayoutRounding="True"
-                              Fill="{TemplateBinding Foreground}"/>
+                              Fill="{DynamicResource ActiveForegroundBrushKey}"/>
                     </Border>
                 </ControlTemplate>
             </Setter.Value>
@@ -304,7 +307,7 @@
                         <Path VerticalAlignment="Center" HorizontalAlignment="Center" SnapsToDevicePixels="True"
                               Data="M3,0 L9,0 L9,6 L10,6 L10,7 L6.5,7 L6.5,11 L5.5,11 L5.5,7 L2,7 L2,6 L3,6 Z M4,1 L6,1 L6,6 L4,6 Z"
                               Width="12" Height="12" UseLayoutRounding="True"
-                              Fill="{TemplateBinding Foreground}"
+                              Fill="{DynamicResource ActiveForegroundBrushKey}"
                               LayoutTransform="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type view:AnchorHeaderControl}},Path=DataContext.Mode,Converter={StaticResource DockModeToTransformConverter}}"/>
                     </Border>
                 </ControlTemplate>
@@ -321,7 +324,7 @@
                         <Path VerticalAlignment="Center" HorizontalAlignment="Center"
                               Data="M1,4 L1,11 L11,11 L11,4 Z M0,1 L12,1 L12,12 L0,12 Z"
                               Width="12" Height="12" UseLayoutRounding="True"
-                              Fill="{TemplateBinding Foreground}"/>
+                              Fill="{DynamicResource ActiveForegroundBrushKey}"/>
                     </Border>
                 </ControlTemplate>
             </Setter.Value>
@@ -337,7 +340,7 @@
                         <Path VerticalAlignment="Center" HorizontalAlignment="Center"
                               Data="M1,5 L1,11 L8,11 L8,5 Z M4,2 L4,3 L9,3 L9,8 L11,8 L11,2 Z M3,0 L12,0 L12,9 L9,9 L9,12 L0,12 L0,3 L3,3 Z"
                               Width="12" Height="12" UseLayoutRounding="True"
-                              Fill="{TemplateBinding Foreground}"/>
+                              Fill="{DynamicResource ActiveForegroundBrushKey}"/>
                     </Border>
                 </ControlTemplate>
             </Setter.Value>
@@ -574,7 +577,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type view:LayoutDragSplitter}">
-                    <Rectangle SnapsToDevicePixels="True" Fill="{TemplateBinding Background}"/>
+                    <Rectangle SnapsToDevicePixels="True" Fill="{DynamicResource ThemeBrushKey}"/>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
@@ -596,17 +599,17 @@
                             <TextBlock x:Name="HeaderTextBlock" TextTrimming="CharacterEllipsis" VerticalAlignment="Center" Text="{Binding Title}"/>
                             <view:TexturePanel UseLayoutRounding="True" DataContext="{Binding}" Grid.Column="1" SnapsToDevicePixels="True" Margin="10,0,10,0"/>
                             <StackPanel Grid.Column="2" Orientation="Horizontal" SnapsToDevicePixels="True">
-                                <ToggleButton x:Name="PART_DropMenu" ToolTip="{Global:Resource Key=Window_Position}" IsChecked="{Binding RelativeSource={RelativeSource Self},Path=ContextMenu.IsOpen}" IsThreeState="False" Style="{StaticResource Header_TB_Style}"/>
-                                <Button x:Name="Maximize" Style="{StaticResource Anchor_Maximize}" Command="{x:Static command:GlobalCommands.MaximizeCommand}" Visibility="{Binding RelativeSource={RelativeSource Self},Path=IsEnabled,Converter={StaticResource BoolToVisibilityConverter}}"/>
-                                <Button x:Name="Restore" Style="{StaticResource Anchor_Restore}" Command="{x:Static command:GlobalCommands.RestoreCommand}" Visibility="{Binding RelativeSource={RelativeSource Self},Path=IsEnabled,Converter={StaticResource BoolToVisibilityConverter}}"/>
-                                <Button Style="{StaticResource Anchor_AutoHide}" Command="{x:Static command:GlobalCommands.SwitchAutoHideStatusCommand}" Visibility="{Binding RelativeSource={RelativeSource TemplatedParent},Path=DataContext.Mode,Converter={StaticResource DockModeToVisibilityConverter}}"/>
-                                <Button Style="{StaticResource Anchor_Close}" Command="{x:Static command:GlobalCommands.HideStatusCommand}"/>
+                                <ToggleButton x:Name="PART_DropMenu" ToolTip="{Global:Resource Key=Window_Position}" IsChecked="{Binding RelativeSource={RelativeSource Self},Path=ContextMenu.IsOpen}" IsThreeState="False" Style="{StaticResource Header_TB_Style}" Foreground="{DynamicResource ActiveForegroundBrushKey}"/>
+                                <Button x:Name="Maximize" Style="{StaticResource Anchor_Maximize}" Command="{x:Static command:GlobalCommands.MaximizeCommand}" Visibility="{Binding RelativeSource={RelativeSource Self},Path=IsEnabled,Converter={StaticResource BoolToVisibilityConverter}}" Foreground="{DynamicResource ActiveForegroundBrushKey}"/>
+                                <Button x:Name="Restore" Style="{StaticResource Anchor_Restore}" Command="{x:Static command:GlobalCommands.RestoreCommand}" Visibility="{Binding RelativeSource={RelativeSource Self},Path=IsEnabled,Converter={StaticResource BoolToVisibilityConverter}}" Foreground="{DynamicResource ActiveForegroundBrushKey}"/>
+                                <Button Style="{StaticResource Anchor_AutoHide}" Command="{x:Static command:GlobalCommands.SwitchAutoHideStatusCommand}" Visibility="{Binding RelativeSource={RelativeSource TemplatedParent},Path=DataContext.Mode,Converter={StaticResource DockModeToVisibilityConverter}}" Foreground="{DynamicResource ActiveForegroundBrushKey}"/>
+                                <Button Style="{StaticResource Anchor_Close}" Command="{x:Static command:GlobalCommands.HideStatusCommand}" Foreground="{DynamicResource ActiveForegroundBrushKey}"/>
                             </StackPanel>
                         </Grid>
                     </Border>
                     <ControlTemplate.Triggers>
                         <DataTrigger Binding="{Binding IsActive}" Value="True">
-                            <Setter TargetName="HeaderTextBlock" Property="Foreground" Value="White"/>
+                            <Setter TargetName="HeaderTextBlock" Property="Foreground" Value="{DynamicResource ActiveForegroundBrushKey}"/>
                             <Setter Property="Background" Value="{StaticResource ActiveHeaderBackground}"/>
                         </DataTrigger>
                     </ControlTemplate.Triggers>
@@ -616,7 +619,7 @@
     </Style>
 
     <Style TargetType="{x:Type view:LayoutContentControl}">
-        <Setter Property="Background" Value="WhiteSmoke"/>
+        <Setter Property="Background" Value="{DynamicResource ActiveForegroundBrushKey}"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type view:LayoutContentControl}">
@@ -705,7 +708,8 @@
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
                 <Image VerticalAlignment="Center" Height="14" Source="{Binding Path=ImageSource,Converter={StaticResource NullToDoNothingConverter}}" Stretch="Uniform"/>
-                <TextBlock x:Name="title" VerticalAlignment="Center" Margin="4,0,0,0" Text="{Binding Path=Title}" Grid.Column="1" TextTrimming="CharacterEllipsis"/>
+                <TextBlock x:Name="title" VerticalAlignment="Center" Margin="4,0,0,0" Text="{Binding Path=Title}" Grid.Column="1" TextTrimming="CharacterEllipsis"
+                           Foreground="{DynamicResource ActiveForegroundBrushKey}"/>
                 <Button x:Name="PART_Close" Margin="8,0,0,0" Grid.Column="2" Visibility="Hidden"
                         Style="{StaticResource Header_Close}" Command="{x:Static command:GlobalCommands.HideStatusCommand}"/>
             </Grid>
@@ -714,16 +718,13 @@
             <Trigger Property="IsMouseOver" Value="True">
                 <Setter TargetName="PART_Close" Property="Visibility" Value="Visible"/>
                 <Setter Property="Background" Value="{StaticResource MouseOnBackground}"/>
-                <Setter TargetName="title" Property="Foreground" Value="White"/>
             </Trigger>
             <Trigger Property="IsSelected" Value="True">
                 <Setter TargetName="PART_Close" Property="Visibility" Value="Visible"/>
                 <Setter Property="Background" Value="{StaticResource BorderBrush}"/>
-                <Setter TargetName="title" Property="Foreground" Value="#FF717171"/>
             </Trigger>
             <DataTrigger Binding="{Binding IsActive}" Value="True">
                 <Setter Property="Background" Value="{StaticResource ActiveHeaderBackground}"/>
-                <Setter TargetName="title" Property="Foreground" Value="White"/>
             </DataTrigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>
@@ -858,7 +859,7 @@
     <Style TargetType="{x:Type view:LayoutDocumentGroupControl}">
         <Setter Property="BorderThickness" Value="1,0,1,1"/>
         <Setter Property="BorderBrush" Value="{StaticResource BorderBrush}"/>
-        <Setter Property="Background" Value="White"/>
+        <Setter Property="Background" Value="{DynamicResource ActiveForegroundBrushKey}"/>
         <Setter Property="Template" Value="{StaticResource DocumentGroupControlNormal}"/>
 
         <Setter Property="ItemContainerStyle">
@@ -921,7 +922,7 @@
                         </MultiTrigger>
                         <Trigger Property="IsSelected" Value="True">
                             <Setter Property="Foreground" Value="{StaticResource ActiveHeaderBackground}"/>
-                            <Setter Property="Background" Value="WhiteSmoke"/>
+                            <Setter Property="Background" Value="{DynamicResource ActiveForegroundBrushKey}"/>
                             <Setter Property="BorderThickness" Value="1,0,1,1"/>
                             <Setter Property="Margin" Value="0,-1,0,0"/>
                         </Trigger>
@@ -1000,7 +1001,7 @@
             </Trigger>
             <Trigger Property="IsActive" Value="False">
                 <Setter Property="BorderBrush" Value="#FF8D8D8D"/>
-                <Setter TargetName="Title" Property="Foreground" Value="#FFB2B2B2"/>
+                <Setter TargetName="Title" Property="Foreground" Value="{DynamicResource ActiveForegroundBrushKey}"/>
             </Trigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>
@@ -1023,35 +1024,50 @@
                 <ControlTemplate TargetType="{x:Type view:DocumentGroupWindow}">
                     <Border UseLayoutRounding="True" SnapsToDevicePixels="True" BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}"
-                            Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}">
+                            Background="{DynamicResource ThemeBrushKey}" Padding="{TemplateBinding Padding}">
                         <Grid SnapsToDevicePixels="True">
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="*" />
                             </Grid.RowDefinitions>
-                            <DockPanel x:Name="PART_Header" Height="32">
-                                <StackPanel DockPanel.Dock="Left" Orientation="Horizontal">
-                                    <Button VerticalAlignment="Center" Margin="7,0,5,0" Content="{Binding RelativeSource={RelativeSource Mode=TemplatedParent},Path=DockManager.DockImageSource}"
+
+                            <!--controls:MetroWindow.IsCaptionBar="True"-->
+                            <Border Grid.Row="0">
+                                <Grid x:Name="PART_Header">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+                                    <StackPanel Orientation="Horizontal">
+                                        <controls:CaptionIcon Grid.Column="0">
+                                            <Image Source="{TemplateBinding Content}" Width="18" Height="18"/>
+                                        </controls:CaptionIcon>
+                                        <TextBlock Grid.Column="1"
+                                                   Text="{Binding RelativeSource={RelativeSource TemplatedParent},Path=DockManager.DockTitle}"
+                                                   TextTrimming="CharacterEllipsis"
+                                                   Foreground="{DynamicResource ForegroundBrushKey}"
+                                                   FontFamily="Segoe UI Light"
+                                                   FontSize="18"
+                                                   Margin="3,0,0,0"
+                                                   VerticalAlignment="Center" />
+                                        <!--<Button VerticalAlignment="Center" Margin="7,0,5,0" Content="{Binding RelativeSource={RelativeSource Mode=TemplatedParent},Path=DockManager.DockImageSource}"
                                             Height="{x:Static SystemParameters.SmallIconHeight}"
                                             Width="{x:Static SystemParameters.SmallIconWidth}"
                                             WindowChrome.IsHitTestVisibleInChrome="True" IsTabStop="False"
                                             Command="{x:Static SystemCommands.ShowSystemMenuCommand}">
-                                        <Button.Template>
-                                            <ControlTemplate TargetType="{x:Type Button}">
-                                                <Image Source="{TemplateBinding Content}"/>
-                                            </ControlTemplate>
-                                        </Button.Template>
-                                    </Button>
-                                    <!--<Image Source="{Binding RelativeSource={RelativeSource TemplatedParent},Path=DockManager.DockImageSource}"/>-->
-                                    <TextBlock x:Name="Title" Margin="5,0,0,0" VerticalAlignment="Center" FontSize="12" TextTrimming="CharacterEllipsis" Text="{Binding RelativeSource={RelativeSource TemplatedParent},Path=DockManager.DockTitle}"/>
-                                </StackPanel>
-                                <StackPanel DockPanel.Dock="Right" HorizontalAlignment="Right" Orientation="Horizontal">
-                                    <Button Height="24" Style="{StaticResource Window_Minimize}" Command="{x:Static command:GlobalCommands.MinimizeCommand}"/>
-                                    <Button x:Name="Maximize_Btn" Height="24" Style="{StaticResource Window_Maximize}" Command="{x:Static command:GlobalCommands.MaximizeCommand}"/>
-                                    <Button x:Name="Restore_Btn" Height="24" Visibility="Collapsed" Style="{StaticResource Window_Restore}" Command="{x:Static command:GlobalCommands.RestoreCommand}"/>
-                                    <Button Height="24" Style="{StaticResource Window_Close}" Command="{x:Static command:GlobalCommands.CloseCommand}"/>
-                                </StackPanel>
-                            </DockPanel>
+                                            <Button.Template>
+                                                <ControlTemplate TargetType="{x:Type Button}">
+                                                    <Image Source="{TemplateBinding Content}"/>
+                                                </ControlTemplate>
+                                            </Button.Template>
+                                        </Button>-->
+                                    </StackPanel>
+                                    <controls:SystemButtons Grid.Column="2"
+                                                        VerticalAlignment="Top" />
+                                </Grid>
+                            </Border>
+
                             <AdornerDecorator Grid.Row="1">
                                 <Border Padding="6,0,6,6">
                                     <ContentPresenter Content="{TemplateBinding Content}"/>
@@ -1059,17 +1075,6 @@
                             </AdornerDecorator>
                         </Grid>
                     </Border>
-                    <ControlTemplate.Triggers>
-                        <Trigger Property="WindowState" Value="Maximized">
-                            <Setter TargetName="Maximize_Btn" Property="Visibility" Value="Collapsed"/>
-                            <Setter TargetName="Restore_Btn" Property="Visibility" Value="Visible"/>
-                            <Setter Property="Padding" Value="6"/>
-                        </Trigger>
-                        <Trigger Property="IsActive" Value="False">
-                            <Setter Property="BorderBrush" Value="#FF8D8D8D"/>
-                            <Setter TargetName="Title" Property="Foreground" Value="#FFB2B2B2"/>
-                        </Trigger>
-                    </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>

@@ -10,6 +10,7 @@ using System.Windows.Interop;
 using System.Windows.Media;
 using System.Windows.Threading;
 using System.Xml.Linq;
+using MetroRadiance.UI.Controls;
 using YDock.Commands;
 using YDock.Enum;
 using YDock.Interface;
@@ -17,7 +18,7 @@ using YDock.Model;
 
 namespace YDock.View
 {
-    public abstract class BaseFloatWindow : Window, ILayoutViewParent
+    public abstract class BaseFloatWindow : MetroWindow, ILayoutViewParent
     {
         protected BaseFloatWindow(DockManager dockManager, bool needReCreate = false)
         {

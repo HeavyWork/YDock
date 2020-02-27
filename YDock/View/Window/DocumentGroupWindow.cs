@@ -99,11 +99,11 @@ namespace YDock.View
             }
         }
 
-        DockPanel header;
+        Grid header;
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
-            header = (DockPanel)GetTemplateChild("PART_Header");
+            header = (Grid)GetTemplateChild("PART_Header");
             if (_needReCreate)
                 header.Visibility = Visibility.Collapsed;
         }
