@@ -207,6 +207,10 @@
       <Project>{7f898b3a-da17-4cab-b387-5629b5faca49}</Project>
       <Name>RetroRadiance</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\NeutrinoStudio.Utilities\NeutrinoStudio.Utilities.csproj">
+      <Project>{0354d973-ec37-4e94-941a-a12dd2629e96}</Project>
+      <Name>NeutrinoStudio.Utilities</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

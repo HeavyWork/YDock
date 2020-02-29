@@ -8,7 +8,8 @@
                     xmlns:sys="clr-namespace:System;assembly=mscorlib"
                     xmlns:Global="clr-namespace:YDock.Global"
                     xmlns:chrome="http://schemes.grabacr.net/winfx/2014/chrome"
-                    xmlns:controls="http://schemes.grabacr.net/winfx/2014/controls">
+                    xmlns:controls="http://schemes.grabacr.net/winfx/2014/controls"
+                    xmlns:u="clr-namespace:NeutrinoStudio.Utilities.Controls;assembly=NeutrinoStudio.Utilities">
     <enum:DockSide x:Key="Top">Top</enum:DockSide>
     <enum:DockSide x:Key="Right">Right</enum:DockSide>
 
@@ -1041,7 +1042,7 @@
                                     </Grid.ColumnDefinitions>
                                     <StackPanel Orientation="Horizontal">
                                         <controls:CaptionIcon Grid.Column="0">
-                                            <Image Source="{TemplateBinding Content}" Width="18" Height="18"/>
+                                          <u:Icon Width="20" Height="20" Type="Assembly" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                         </controls:CaptionIcon>
                                         <TextBlock Grid.Column="1"
                                                    Text="{Binding RelativeSource={RelativeSource TemplatedParent},Path=DockManager.DockTitle}"
