@@ -9,7 +9,7 @@
                     xmlns:Global="clr-namespace:YDock.Global"
                     xmlns:chrome="http://schemes.grabacr.net/winfx/2014/chrome"
                     xmlns:controls="http://schemes.grabacr.net/winfx/2014/controls"
-                    xmlns:u="clr-namespace:NeutrinoStudio.Utilities.Controls;assembly=NeutrinoStudio.Utilities">
+                    xmlns:u="clr-namespace:VisualIcon;assembly=VisualIcon">
     <enum:DockSide x:Key="Top">Top</enum:DockSide>
     <enum:DockSide x:Key="Right">Right</enum:DockSide>
 
