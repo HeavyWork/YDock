@@ -115,7 +115,7 @@ namespace YDock
         #region DockTitle
         public static readonly DependencyProperty DockTitleProperty =
             DependencyProperty.Register("DockTitle", typeof(string), typeof(DockManager),
-                new FrameworkPropertyMetadata("NEUTRINO Studio"));
+                new FrameworkPropertyMetadata(Application.Current.MainWindow is null ? "" : Application.Current.MainWindow.Title));
 
         /// <summary>
         /// 用于浮动窗口显示，一般用作应用程序的Title
